@@ -11,8 +11,6 @@
     "aurelia-animator-css": "^1.0.2",
     "aurelia-bootstrapper": "^2.1.1",
     "bluebird": "^3.4.1",
-    "karma-firefox-launcher": "^1.0.1",
-    "karma-ie-launcher": "^1.0.0",
     "requirejs": "^2.3.2",
     "text": "github:requirejs/text#latest"
   },
@@ -37,6 +35,9 @@
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-edge-launcher": "^0.4.2",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-ie-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-typescript-preprocessor": "^0.2.1",

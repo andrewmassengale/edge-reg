@@ -38,7 +38,7 @@ module.exports = function(config) {
 		colors: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
-		browsers: ['Chrome', 'Firefox', 'IE'],
+		browsers: ['Chrome', 'Firefox', 'IE', 'Edge'],
 		singleRun: false,
 		// client.args must be a array of string.
 		// Leave 'aurelia-root', project.paths.root in this order so we can find
