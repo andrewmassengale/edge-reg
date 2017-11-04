@@ -14,8 +14,7 @@
 		"lib": ["es2017", "dom"]
 	},
 	"exclude": [
-		"node_modules",
-		"aurelia_project"
+		"node_modules"
 	],
 	"filesGlob": [
 		"./src/**/*.ts",

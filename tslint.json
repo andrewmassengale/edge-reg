@@ -3,6 +3,9 @@
 	"rules": {
 		"indent": [ true, "tabs", 4 ],
 		"quotemark": [ true, "single" ],
-		"semicolon": [ true, "never" ]
+		"semicolon": [ true, "never" ],
+		"object-literal-sort-keys": false,
+		"member-ordering": false,
+		"max-line-length": false
 	}
 }
