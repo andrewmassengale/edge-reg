@@ -4,6 +4,7 @@ import environment from './environment'
 export async function configure(aurelia: Aurelia) {
 	aurelia.use
 		.standardConfiguration()
+		.globalResources('bootstrap/css/bootstrap.css')
 		.feature('resources')
 
 	if (environment.debug) {

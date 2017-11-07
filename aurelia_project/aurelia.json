@@ -60,7 +60,12 @@
           "aurelia-path",
           "aurelia-polyfills",
           "aurelia-route-recognizer",
-          "aurelia-router",
+          {
+            "name": "aurelia-router",
+            "main": "aurelia-router",
+            "path": "../node_modules/aurelia-router/dist/amd",
+            "resources": []
+          },
           "aurelia-task-queue",
           "aurelia-templating",
           "aurelia-templating-binding",
@@ -79,7 +84,18 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
-          },
+		  },
+		  "jquery",
+		  {
+			  "name": "bootstrap",
+			  "path": "../node_modules/bootstrap/dist",
+			  "main": "js/bootstrap.min",
+			  "deps": [ "jquery" ],
+			  "exports": "$",
+			  "resources": [
+				  "css/bootstrap.css"
+			  ]
+		  },
           "text"
         ]
       }

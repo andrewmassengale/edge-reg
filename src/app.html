@@ -1,3 +1,13 @@
 <template>
-  <h1>${message}</h1>
+	<div class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav" repeat.for="nav of router.navigation">
+				<li class="${nav.isActive ? 'active' : ''}">
+					<a href.bind="nav.href">${nav.title}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<router-view></router-view>
 </template>

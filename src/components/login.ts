@@ -1,7 +1,7 @@
 export class Login {
-	private message: string
+	public message: string
 
 	constructor() {
-		this.message = 'Hello world'
+		this.message = 'Hello world!!!'
 	}
 }
