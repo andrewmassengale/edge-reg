@@ -91,12 +91,15 @@
 			  "path": "../node_modules/bootstrap/dist",
 			  "main": "js/bootstrap.min",
 			  "deps": [ "jquery" ],
-			  "exports": "$",
-			  "resources": [
-				  "css/bootstrap.css"
-			  ]
+			  "exports": "$"
 		  },
-          "text"
+		  "text",
+		  {
+			  "name": "firebase",
+			  "main": "firebase",
+			  "path": "../node_modules/firebase",
+			  "exports": "firebase"
+		  }
         ]
       }
     ],
@@ -115,6 +118,11 @@
         }
       ]
     }
+  },
+  "bootstrap": {
+	  "id": "bootstrap",
+	  "displayName": "Bootstrap",
+	  "source": "node_modules/bootstrap/dist"
   },
   "platform": {
     "id": "web",
