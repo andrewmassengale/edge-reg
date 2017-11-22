@@ -19,7 +19,6 @@ export class Login {
 				this.router.navigateToRoute('home')
 			})
 			.catch((e) => {
-				console.log(e)
 				alert('invalid login')
 			})
 	}
