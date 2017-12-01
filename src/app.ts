@@ -1,4 +1,4 @@
-import { inject } from 'aurelia-framework'
+import { inject, bindable } from 'aurelia-framework'
 import { RouterConfiguration, Router } from 'aurelia-router'
 import * as firebase from 'firebase'
 
@@ -9,12 +9,16 @@ import { Auth } from './auth'
 export class App {
 	public router: Router
 
-	private user: User
-	private auth: Auth
+	@bindable public user: User
+	public auth: Auth
 
 	public constructor(user: User, auth: Auth) {
 		this.user = user
 		this.auth = auth
+
+		firebase.auth().onAuthStateChanged(async (state) => {
+			this.user.syncUser()
+		})
 	}
 
 	public logout() {

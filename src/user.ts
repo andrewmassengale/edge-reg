@@ -1,5 +1,7 @@
+import * as firebase from 'firebase'
+
 export class User {
-	public username: String
+	public loggedIn: Boolean
 	public name: String
 	public spouseName: String
 	public address: String
@@ -16,8 +18,14 @@ export class User {
 	public emailSubscription: Boolean
 
 	public constructor() {
-		this.username = 'andrewmassengale'
-		this.name = 'Andrew Massengale'
+		this.syncUser()
+	}
+
+	public syncUser() {
+		const currentUser = firebase.auth().currentUser
+
+		this.loggedIn = !!currentUser
+		this.name = currentUser.displayName
 		this.spouseName = 'Megan Massengale'
 		this.address = '429 Grace st'
 		this.city = 'Bensenville'

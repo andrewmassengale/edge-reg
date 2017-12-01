@@ -12,6 +12,7 @@ const firebaseConfig = {
 }
 
 export async function configure(aurelia: Aurelia) {
+	let aureliaInit = false
 	aurelia.use
 		.standardConfiguration()
 		.feature('resources')
@@ -27,7 +28,10 @@ export async function configure(aurelia: Aurelia) {
 	// don't start the app until firebase has determined whether or not the user is logged in
 	firebase.initializeApp(firebaseConfig)
 	firebase.auth().onAuthStateChanged(async (state) => {
-		await aurelia.start()
-		await aurelia.setRoot('app')
+		if (!aureliaInit) {
+			await aurelia.start()
+			await aurelia.setRoot('app')
+			aureliaInit = true
+		}
 	})
 }

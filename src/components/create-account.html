@@ -5,6 +5,11 @@
 	<form role="form" submit.delegate="createAccount()">
 		<div class="form-horizontal">
 			<div class="form-group col-sm-12">
+				<label for="name">Name</label>
+				<input type="name" placeholder="Full Name" class="form-control" id="name" value.bind="name">
+			</div>
+
+			<div class="form-group col-sm-12">
 				<label for="email">Email</label>
 				<input type="email" placeholder="E-mail Address" class="form-control" id="email" value.bind="email">
 			</div>
@@ -16,7 +21,7 @@
 
 			<div class="form-group col-sm-12">
 				<label for="password-repeat">Re-type Password</label>
-				<input type="password-repeat" placeholder="Re-Type Your Password" class="form-control" id="password-repeat" value.bind="passwordRepeat">
+				<input type="password" placeholder="Re-Type Your Password" class="form-control" id="password-repeat" value.bind="passwordRepeat">
 			</div>
 
 			<div class="form-group col-sm-12">

@@ -1,7 +1,10 @@
 export class CreateAccount {
-	private message: string
+	public name
+	public email
+	public password
+	public passwordRepeat
 
-	constructor() {
-		this.message = 'Hello world'
+	public createAccount() {
+		console.log(this.name, this.email, this.password, this.passwordRepeat)
 	}
 }
