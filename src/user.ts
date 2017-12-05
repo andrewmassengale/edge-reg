@@ -25,24 +25,27 @@ export class User {
 		const currentUser = firebase.auth().currentUser
 
 		this.loggedIn = !!currentUser
-		this.name = currentUser.displayName
-		this.spouseName = 'Megan Massengale'
-		this.address = '429 Grace st'
-		this.city = 'Bensenville'
-		this.zipCode = '60106'
-		this.phone = '815.614.8296'
-		this.email = 'andrew.massengale@gmail.com'
-		this.alternateEmail = ''
-		this.children = [
-			{ name: 'Bella', birthDate: '06/26/2010', homeEducated: true },
-			{ name: 'Joshua', birthDate: '08/25/2012', homeEducated: true },
-			{ name: 'Ava', birthDate: '03/29/2015', homeEducated: true },
-		]
-		this.householdOccupation = 'Web Developer'
-		this.tutor = false
-		this.tutorArea = ''
-		this.publishEdgeDirectory = true
-		this.emailSubscription = true
+
+		if (this.loggedIn) {
+			this.name = currentUser.displayName
+			this.spouseName = 'Megan Massengale'
+			this.address = '429 Grace st'
+			this.city = 'Bensenville'
+			this.zipCode = '60106'
+			this.phone = '815.614.8296'
+			this.email = 'andrew.massengale@gmail.com'
+			this.alternateEmail = ''
+			this.children = [
+				{ name: 'Bella', birthDate: '06/26/2010', homeEducated: true },
+				{ name: 'Joshua', birthDate: '08/25/2012', homeEducated: true },
+				{ name: 'Ava', birthDate: '03/29/2015', homeEducated: true },
+			]
+			this.householdOccupation = 'Web Developer'
+			this.tutor = false
+			this.tutorArea = ''
+			this.publishEdgeDirectory = true
+			this.emailSubscription = true
+		}
 	}
 }
 
