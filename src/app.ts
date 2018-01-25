@@ -34,11 +34,11 @@ export class App {
 		config.addAuthorizeStep(this.auth)
 
 		config.map([
-			{ route: 'login', title: 'Login', name: 'login', moduleId: 'components/login' },
-			{ route: 'create-account', title: 'Create Account', name: 'createaccount', moduleId: 'components/create-account' },
+			{ route: 'login', title: 'Login', name: 'login', moduleId: 'components/login/login' },
+			{ route: 'create-account', title: 'Create Account', name: 'createaccount', moduleId: 'components/create-account/create-account' },
 
-			{ route: '', title: 'Home', nav: true, name: 'home', moduleId: 'components/home', settings: { auth: true } },
-			{ route: 'register', title: 'Registration', nav: true, name: 'register', moduleId: 'components/register', settings: { auth: true }  },
+			{ route: '', title: 'Home', nav: true, name: 'home', moduleId: 'components/home/home', settings: { auth: true } },
+			{ route: 'register', title: 'Registration', nav: true, name: 'register', moduleId: 'components/register/register', settings: { auth: true }  },
 		])
 
 		this.router = router

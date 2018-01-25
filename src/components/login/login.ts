@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework'
 import { Router } from 'aurelia-router'
 import * as firebase from 'firebase'
 
-import { User } from '../user'
+import { User } from '../../user'
 
 @inject(Router, User)
 export class Login {

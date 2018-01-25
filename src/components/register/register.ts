@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework'
 
-import { User } from '../user'
+import { User } from '../../user'
 
 @inject(User)
 export class Register {

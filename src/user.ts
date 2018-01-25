@@ -33,7 +33,7 @@ export class User {
 			this.city = 'Bensenville'
 			this.zipCode = '60106'
 			this.phone = '815.614.8296'
-			this.email = 'andrew.massengale@gmail.com'
+			this.email = currentUser.email
 			this.alternateEmail = ''
 			this.children = [
 				{ name: 'Bella', birthDate: '06/26/2010', homeEducated: true },
