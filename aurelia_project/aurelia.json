@@ -84,22 +84,30 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
-		  },
-		  "jquery",
-		  {
-			  "name": "bootstrap",
-			  "path": "../node_modules/bootstrap/dist",
-			  "main": "js/bootstrap.min",
-			  "deps": [ "jquery" ],
-			  "exports": "$"
-		  },
-		  "text",
-		  {
-			  "name": "firebase",
-			  "main": "firebase",
-			  "path": "../node_modules/firebase",
-			  "exports": "firebase"
-		  }
+          },
+          "jquery",
+          {
+            "name": "bootstrap",
+            "path": "../node_modules/bootstrap/dist",
+            "main": "js/bootstrap.min",
+            "deps": [
+              "jquery"
+            ],
+            "exports": "$"
+          },
+          "text",
+          {
+            "name": "firebase",
+            "main": "firebase",
+            "path": "../node_modules/firebase",
+            "exports": "firebase"
+          },
+          {
+            "name": "aurelia-validation",
+            "main": "aurelia-validation",
+            "path": "../node_modules/aurelia-validation/dist/amd",
+            "resources": []
+          }
         ]
       }
     ],
@@ -120,9 +128,9 @@
     }
   },
   "bootstrap": {
-	  "id": "bootstrap",
-	  "displayName": "Bootstrap",
-	  "source": "node_modules/bootstrap/dist"
+    "id": "bootstrap",
+    "displayName": "Bootstrap",
+    "source": "node_modules/bootstrap/dist"
   },
   "platform": {
     "id": "web",
