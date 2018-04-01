@@ -17,7 +17,7 @@ export class App {
 		this.auth = auth
 
 		firebase.auth().onAuthStateChanged(async (state) => {
-			this.user.syncUser()
+			this.user.syncUser(true)
 		})
 	}
 

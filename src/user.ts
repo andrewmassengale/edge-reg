@@ -1,5 +1,8 @@
 import * as firebase from 'firebase'
 
+declare global {
+	interface Window { user: any, loggedInUser: any }
+}
 export class User {
 	public loggedIn: Boolean
 	public name: String
@@ -10,42 +13,75 @@ export class User {
 	public phone: String
 	public email: String
 	public alternateEmail: String
-	public children: [ IChildren ]
+	public children: IChildren[]
 	public householdOccupation: String
 	public tutor: Boolean
 	public tutorArea: String
 	public publishEdgeDirectory: Boolean
 	public emailSubscription: Boolean
+	private database
 
 	public constructor() {
-		this.syncUser()
+		this.database = firebase.database()
 	}
 
-	public syncUser() {
+	public async syncUser(initialLoad?: boolean): Promise<boolean> {
 		const currentUser = firebase.auth().currentUser
+		window.user = this
 
 		this.loggedIn = !!currentUser
 
-		if (this.loggedIn) {
-			this.name = currentUser.displayName
-			this.spouseName = 'Megan Massengale'
-			this.address = '429 Grace st'
-			this.city = 'Bensenville'
-			this.zipCode = '60106'
-			this.phone = '815.614.8296'
-			this.email = currentUser.email
-			this.alternateEmail = ''
-			this.children = [
-				{ name: 'Bella', birthDate: '06/26/2010', homeEducated: true },
-				{ name: 'Joshua', birthDate: '08/25/2012', homeEducated: true },
-				{ name: 'Ava', birthDate: '03/29/2015', homeEducated: true },
-			]
-			this.householdOccupation = 'Web Developer'
-			this.tutor = false
-			this.tutorArea = ''
-			this.publishEdgeDirectory = true
-			this.emailSubscription = true
+		if (this.loggedIn && initialLoad) {
+			const userData = await this.database.ref(`users/${currentUser.uid}`).once('value')
+			const userDataVal = userData.val()
+
+			this.name = userDataVal.name
+			this.spouseName = userDataVal.spouseName
+			this.address = userDataVal.address
+			this.city = userDataVal.city
+			this.zipCode = userDataVal.zipCode
+			this.phone = userDataVal.phone
+			this.email = userDataVal.email
+			this.alternateEmail = userDataVal.alternateEmail
+			this.children = userDataVal.children
+			this.householdOccupation = userDataVal.householdOccupation
+			this.tutor = userDataVal.tutor
+			this.tutorArea = userDataVal.tutorArea
+			this.publishEdgeDirectory = userDataVal.publishEdgeDirectory
+			this.emailSubscription = userDataVal.emailSubscription
+		} else if (this.loggedIn) {
+			await this.database.ref(`users/${currentUser.uid}`).set(this.toJSON())
 		}
+
+		return true
+	}
+
+	public toJSON() {
+		const retJson = {
+			name: this.name,
+			spouseName: this.spouseName,
+			address: this.address,
+			city: this.city,
+			zipCode: this.zipCode,
+			phone: this.phone,
+			email: this.email,
+			alternateEmail: this.alternateEmail,
+			children: [ ],
+			householdOccupation: this.householdOccupation,
+			tutor: this.tutor,
+			tutorArea: this.tutorArea,
+			publishEdgeDirectory: this.publishEdgeDirectory,
+			emailSubscription: this.emailSubscription,
+		}
+		this.children.forEach((child) => {
+			retJson.children.push({
+				name: child.name,
+				birthDate: child.birthDate,
+				homeEducated: child.homeEducated,
+			})
+		})
+
+		return retJson
 	}
 }
 

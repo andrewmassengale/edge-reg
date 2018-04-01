@@ -26,6 +26,10 @@
         "source": [
           "[**/*.js]",
           "**/*.{css,html}"
+        ],
+        "dependencies": [
+            "jquery",
+            "bootstrap-sass"
         ]
       },
       {
@@ -61,6 +65,14 @@
           "aurelia-polyfills",
           "aurelia-route-recognizer",
           {
+            "name": "sweetalert2",
+            "path": "../node_modules/sweetalert2/dist",
+            "main": "sweetalert2",
+            "resources": [
+                "sweetalert2.css"
+            ]
+          },
+          {
             "name": "aurelia-router",
             "main": "aurelia-router",
             "path": "../node_modules/aurelia-router/dist/amd",
@@ -86,15 +98,6 @@
             "env": "dev"
           },
           "jquery",
-          {
-            "name": "bootstrap",
-            "path": "../node_modules/bootstrap/dist",
-            "main": "js/bootstrap.min",
-            "deps": [
-              "jquery"
-            ],
-            "exports": "$"
-          },
           "text",
           {
             "name": "firebase",
@@ -130,7 +133,7 @@
   "bootstrap": {
     "id": "bootstrap",
     "displayName": "Bootstrap",
-    "source": "node_modules/bootstrap/dist"
+    "source": "node_modules/bootstrap-sass/assets"
   },
   "platform": {
     "id": "web",
@@ -144,7 +147,8 @@
     "displayName": "TypeScript",
     "fileExtension": ".ts",
     "dtsSource": [
-      "./custom_typings/**/*.d.ts"
+      "./custom_typings/**/*.d.ts",
+      "../node_modules/**/typings/*.d.ts"
     ],
     "source": "src/**/*.ts"
   },
@@ -155,10 +159,10 @@
     "source": "src/**/*.html"
   },
   "cssProcessor": {
-    "id": "none",
-    "displayName": "None",
-    "fileExtension": ".css",
-    "source": "src/**/*.css"
+    "id": "sass",
+    "displayName": "Sass",
+    "fileExtension": ".scss",
+    "source": "src/**/*.scss"
   },
   "editor": {
     "id": "vscode",

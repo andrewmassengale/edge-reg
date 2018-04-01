@@ -41,5 +41,79 @@
 
 		<div class="clearfix"></div>
 		<hr>
+
+		<h2>Children</h2>
+		<small><a href="#" click.delegate="addChild()">add child</a></small>
+
+		<div repeat.for="child of user.children">
+			<div class="form-group col-sm-4">
+				<label for="child${$index + 1}name">Name</label>
+				<input type="text" class="form-control" id="child${$index + 1}name" value.bind="child.name">
+			</div>
+			<div class="form-group col-sm-3">
+				<label for="child${$index + 1}birthDate">Birth Date</label>
+				<input type="text" class="form-control" id="child${$index + 1}birthDate" placeholder="MM/DD/YYYY" maxlength="10" value.bind="child.birthDate" keyup.delegate="dateKeyPress($event)">
+			</div>
+			<div class="col-sm-1"></div>
+			<div class="form-group col-sm-3">
+				<label for="child${$index + 1}name">Home Educated</label>
+				<br>
+				<label class="toggle-check">
+					<input type="checkbox" class="toggle-check-input" checked.bind="child.homeEducated">
+					<span class="toggle-check-text"></span>
+				</label>
+			</div>
+			<div class="col-sm-1">
+				<a href="#" click.delegate="removeChild($index)">delete</a>
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+
+		<hr>
+
+		<div class="form-group col-sm-12">
+			<label for="householdOccupation">Household Occupation</label>
+			<input type="text" class="form-control" id="householdOccupation" value.bind="user.householdOccupation">
+		</div>
+
+		<div class="col-sm-2"></div>
+		<div class="form-group col-sm-4 center">
+			<label for="tutor">Tutor?</label>
+			<br>
+			<label class="toggle-check">
+				<input type="checkbox" class="toggle-check-input" checked.bind="user.tutor">
+				<span class="toggle-check-text"></span>
+			</label>
+		</div>
+		<div class="form-group col-sm-6" show.bind="user.tutor">
+			<label for="tutor">Tutor Area</label>
+			<input type="text" class="form-control" id="tutor" value.bind="user.tutorArea">
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="col-sm-2"></div>
+		<div class="form-group col-sm-4 center">
+			<label for="publishEdgeDirectory">Publish to Edge Directory?</label>
+			<br>
+			<label class="toggle-check">
+				<input type="checkbox" class="toggle-check-input" checked.bind="user.publishEdgeDirectory">
+				<span class="toggle-check-text"></span>
+			</label>
+		</div>
+		<div class="col-sm-2"></div>
+		<div class="form-group col-sm-4 center">
+			<label for="emailSubscription">Subscribe to Email?</label>
+			<br>
+			<label class="toggle-check">
+				<input type="checkbox" class="toggle-check-input" checked.bind="user.emailSubscription">
+				<span class="toggle-check-text"></span>
+			</label>
+		</div>
+
+		<div class="form-group pull-right">
+			<a href="#" class="btn btn-success" click.delegate="submitRegForm()">Submit Registration Form</a>
+		</div>
 	</div>
 </template>

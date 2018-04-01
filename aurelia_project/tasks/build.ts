@@ -1,23 +1,27 @@
 import * as gulp from 'gulp'
 import {CLIOptions, build as buildCLI} from 'aurelia-cli'
+import clean from './clean'
+import cleanDist from './clean-dist'
 import transpile from './transpile'
 import processMarkup from './process-markup'
 import processCSS from './process-css'
 import copyFiles from './copy-files'
 import watch from './watch'
-import prepareBootstrap from './prepare-bootstrap'
+import copyFinal from './copy-final'
 import * as project from '../aurelia.json'
 
 let build = gulp.series(
 	readProjectConfiguration,
+	clean,
+	cleanDist,
 	gulp.parallel(
 		transpile,
 		processMarkup,
 		processCSS,
-		prepareBootstrap,
 		copyFiles
 	),
-	writeBundles
+	writeBundles,
+	copyFinal,
 )
 
 let main
