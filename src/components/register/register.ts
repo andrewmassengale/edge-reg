@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework'
 import swal from 'sweetalert2'
 
-import { User } from '../../user'
+import { User } from '../../resources/models/user'
 
 @inject(User)
 export class Register {
@@ -42,7 +42,7 @@ export class Register {
 	}
 
 	public async submitRegForm() {
-		const successfulSync = await this.user.syncUser()
+		const successfulSync = await this.user.saveUser()
 
 		if (successfulSync) {
 			swal('Success!', 'Registration form successfully saved.', 'success')

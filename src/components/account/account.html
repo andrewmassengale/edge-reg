@@ -1,0 +1,26 @@
+<template>
+	<h1>Manage Your Account</h1>
+	<hr>
+
+	<div class="form-horizontal">
+		<h3>Update Your Password</h3>
+
+		<div class="form-group col-sm-6">
+			<label for="password">Password</label>
+			<input type="password" placeholder="Password" class="form-control" id="password" value.bind="password" focus.bind="passwordFocus">
+		</div>
+
+		<div class="clearfix"></div>
+		
+		<div class="form-group col-sm-6">
+			<label for="password-repeat">Re-type Password</label>
+			<input type="password" placeholder="Re-Type Your Password" class="form-control" id="password-repeat" value.bind="passwordRepeat">
+		</div>
+		
+		<div class="clearfix"></div>
+
+		<div class="form-group col-sm-12">
+			<a href="#" class="btn btn-success" click.delegate="updatePassword()">Update Password</a>
+		</div>
+	</div>
+</template>

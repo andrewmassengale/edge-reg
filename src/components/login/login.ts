@@ -1,8 +1,9 @@
 import { inject } from 'aurelia-framework'
 import { Router } from 'aurelia-router'
 import * as firebase from 'firebase'
+import swal from 'sweetalert2'
 
-import { User } from '../../user'
+import { User } from '../../resources/models/user'
 
 @inject(Router, User)
 export class Login {
@@ -17,13 +18,15 @@ export class Login {
 		this.user = user
 	}
 
-	public login() {
-		firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-			.then((a) => {
-				this.router.navigateToRoute('home')
+	public async login() {
+		try {
+			await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+			this.router.navigateToRoute('home')
+		} catch (e) {
+			swal({
+				title: e.message,
+				type: 'error',
 			})
-			.catch((e) => {
-				alert('invalid login')
-			})
+		}
 	}
 }

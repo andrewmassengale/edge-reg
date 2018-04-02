@@ -15,7 +15,6 @@ export async function configure(aurelia: Aurelia) {
 	let aureliaInit = false
 	aurelia.use
 		.standardConfiguration()
-		.feature('resources')
 
 	if (environment.debug) {
 		aurelia.use.developmentLogging()

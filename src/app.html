@@ -12,9 +12,14 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li if.bind="user.loggedIn">
-					<a href="#">
+					<a route-href="route: account">
 						<i class="glyphicon glyphicon-user"></i>
 						${user.name}
+					</a>
+				</li>
+				<li if.bind="user.admin">
+					<a route-href="route: admin">
+						<i class="glyphicon glyphicon-cog"></i>
 					</a>
 				</li>
 				<li if.bind="user.loggedIn">

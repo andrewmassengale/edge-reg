@@ -2,27 +2,31 @@ import { inject, bindable } from 'aurelia-framework'
 import { RouterConfiguration, Router } from 'aurelia-router'
 import * as firebase from 'firebase'
 
-import { User } from './user'
-import { Auth } from './auth'
+import { User } from './resources/models/user'
+import { LoggedIn } from './resources/authorizers/loggedIn'
+import { IsAdmin } from './resources/authorizers/isAdmin'
 
-@inject(User, Auth)
+@inject(User, LoggedIn, IsAdmin)
 export class App {
 	public router: Router
 
 	@bindable public user: User
-	public auth: Auth
+	public loggedIn: LoggedIn
+	public isAdmin: IsAdmin
 
-	public constructor(user: User, auth: Auth) {
+	public constructor(user: User, loggedIn: LoggedIn, isAdmin: IsAdmin) {
 		this.user = user
-		this.auth = auth
+		this.loggedIn = loggedIn
+		this.isAdmin = isAdmin
 
 		firebase.auth().onAuthStateChanged(async (state) => {
-			this.user.syncUser(true)
+			this.user.syncUser()
 		})
 	}
 
 	public logout() {
 		firebase.auth().signOut()
+		this.user.stopSync()
 		this.router.navigateToRoute('login')
 	}
 
@@ -31,14 +35,52 @@ export class App {
 		config.options.pushState = true
 		config.options.root = '/'
 
-		config.addAuthorizeStep(this.auth)
+		config.addAuthorizeStep(this.loggedIn)
+		config.addAuthorizeStep(this.isAdmin)
 
 		config.map([
-			{ route: 'login', title: 'Login', name: 'login', moduleId: 'components/login/login' },
-			{ route: 'create-account', title: 'Create Account', name: 'createaccount', moduleId: 'components/create-account/create-account' },
-
-			{ route: '', title: 'Home', nav: true, name: 'home', moduleId: 'components/home/home', settings: { auth: true } },
-			{ route: 'register', title: 'Registration', nav: true, name: 'register', moduleId: 'components/register/register', settings: { auth: true }  },
+			{
+				route: 'login',
+				title: 'Login',
+				name: 'login',
+				moduleId: 'components/login/login',
+			},
+			{
+				route: 'create-account',
+				title: 'Create Account',
+				name: 'createaccount',
+				moduleId: 'components/create-account/create-account',
+			},
+			{
+				route: 'account',
+				title: 'Manage Account',
+				name: 'account',
+				moduleId: 'components/account/account',
+				settings: { loggedIn: true },
+			},
+			{
+				route: 'admin',
+				title: 'Edge Reg Admin',
+				name: 'admin',
+				moduleId: 'components/admin/admin',
+				settings: { isAdmin: true },
+			},
+			{
+				route: '',
+				title: 'Home',
+				nav: true,
+				name: 'home',
+				moduleId: 'components/home/home',
+				settings: { loggedIn: true },
+			},
+			{
+				route: 'register',
+				title: 'Registration',
+				nav: true,
+				name: 'register',
+				moduleId: 'components/register/register',
+				settings: { loggedIn: true },
+			},
 		])
 
 		this.router = router
