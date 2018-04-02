@@ -1,0 +1,27 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.10.2
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:jquery:20150627':
+    - jquery:
+        reason: have to test upgrade
+        expires: '2018-05-02T19:40:16.859Z'
+  'npm:braces:20180219':
+    - findup-sync > micromatch > braces:
+        reason: None given
+        expires: '2018-05-02T19:40:16.859Z'
+    - glob-watcher > chokidar > anymatch > micromatch > braces:
+        reason: None given
+        expires: '2018-05-02T19:40:16.859Z'
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - gulp > glob-watcher > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        patched: '2018-04-02T19:38:54.220Z'
+    - glob-watcher > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        patched: '2018-04-02T19:38:54.220Z'
+  'npm:tough-cookie:20170905':
+    - gulp > glob-watcher > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        patched: '2018-04-02T19:38:54.220Z'
+    - glob-watcher > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        patched: '2018-04-02T19:38:54.220Z'

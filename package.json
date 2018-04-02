@@ -9,7 +9,9 @@
   "license": "MIT",
   "scripts": {
     "start": "au run --watch",
-    "deploy": "au build --env prod && firebase deploy"
+    "deploy": "au build --env prod && firebase deploy",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "aurelia-animator-css": "^1.0.2",
@@ -22,7 +24,8 @@
     "jquery": "^2.2.4",
     "requirejs": "^2.3.2",
     "sweetalert2": "^7.18.0",
-    "text": "github:requirejs/text#latest"
+    "text": "github:requirejs/text#latest",
+    "snyk": "^1.70.3"
   },
   "peerDependencies": {},
   "devDependencies": {
@@ -36,7 +39,7 @@
     "debounce": "^1.0.2",
     "del": "^3.0.0",
     "event-stream": "^3.3.3",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-changed-in-place": "^2.0.3",
     "gulp-filter": "^5.1.0",
@@ -66,5 +69,6 @@
     "uglify-js": "^3.0.19",
     "vinyl-fs": "^2.4.3",
     "vinyl-paths": "^2.1.0"
-  }
+  },
+  "snyk": true
 }
