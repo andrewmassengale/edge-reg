@@ -2,6 +2,7 @@ import { inject } from 'aurelia-framework'
 import { EventAggregator } from 'aurelia-event-aggregator'
 import { NavigationInstruction, Next, Redirect } from 'aurelia-router'
 import { User } from '../models/user'
+import * as firebase from 'firebase'
 
 @inject(User, EventAggregator)
 export class HasReg {
@@ -13,6 +14,12 @@ export class HasReg {
 		this.ea = ea
 	}
 	public async run(navigationInstruction: NavigationInstruction, next: Next) {
+		const currentUser = firebase.auth().currentUser
+		const isLoggedIn = !!currentUser
+
+		if (!isLoggedIn) {
+			return next()
+		}
 		if (!this.user.initialLoad) {
 			const subscribeListen = new Promise((resolve, reject) => {
 				this.ea.subscribeOnce('user_initial_load', () => {
