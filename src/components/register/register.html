@@ -2,6 +2,13 @@
 	<h1>Register for Edge</h1>
 	<hr>
 
+	<p class="indent_left" if.bind="!user.email">
+		It looks like you haven't registered yet. Use the form below to fill out your registration for the EDGE
+		co-op.
+
+		<hr>
+	</p>
+
 	<form role="form" submit.delegate="submitRegForm()">
 		<div class="form-horizontal">
 			<div class="form-group col-sm-6">

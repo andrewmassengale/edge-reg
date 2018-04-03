@@ -11,9 +11,14 @@ div[class^='col-'] {
 	}
 }
 
+.indent_left {
+	padding-left: 15px;
+}
+
 .toggle-check-input {
 	height: 0;
 	width: 0;
+	left: 20px;
 	position: absolute;
 }
 

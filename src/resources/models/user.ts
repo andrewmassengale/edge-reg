@@ -13,20 +13,20 @@ export class User {
 	public loggedIn: Boolean = false
 	public admin: Boolean = false
 	public teacher: Boolean = false
-	public name: string
-	public spouseName: string
-	public address: string
-	public city: string
-	public zipCode: string
-	public phone: string
-	public email: string
-	public alternateEmail: string
-	public children: IChildren[]
-	public householdOccupation: string
-	public tutor: Boolean
-	public tutorArea: string
-	public publishEdgeDirectory: Boolean
-	public emailSubscription: Boolean
+	public name: string = ''
+	public spouseName: string = ''
+	public address: string = ''
+	public city: string = ''
+	public zipCode: string = ''
+	public phone: string = ''
+	public email: string = ''
+	public alternateEmail: string = ''
+	public children: IChildren[] = [ ]
+	public householdOccupation: string = ''
+	public tutor: Boolean = false
+	public tutorArea: string = ''
+	public publishEdgeDirectory: Boolean = false
+	public emailSubscription: Boolean = false
 
 	private database
 	private ea: EventAggregator
@@ -100,22 +100,24 @@ export class User {
 	private syncUserChangesFromFirebase(userSnapshot) {
 		const userVals = userSnapshot.val()
 
-		this.admin = !!userVals.admin
-		this.teacher = !!userVals.teacher
-		this.name = userVals.name
-		this.spouseName = userVals.spouseName
-		this.address = userVals.address
-		this.city = userVals.city
-		this.zipCode = userVals.zipCode
-		this.phone = userVals.phone
-		this.email = userVals.email
-		this.alternateEmail = userVals.alternateEmail
-		this.children = userVals.children
-		this.householdOccupation = userVals.householdOccupation
-		this.tutor = userVals.tutor
-		this.tutorArea = userVals.tutorArea
-		this.publishEdgeDirectory = !!userVals.publishEdgeDirectory
-		this.emailSubscription = !!userVals.emailSubscription
+		if (userVals) {
+			this.admin = !!userVals.admin
+			this.teacher = !!userVals.teacher
+			this.name = userVals.name
+			this.spouseName = userVals.spouseName
+			this.address = userVals.address
+			this.city = userVals.city
+			this.zipCode = userVals.zipCode
+			this.phone = userVals.phone
+			this.email = userVals.email
+			this.alternateEmail = userVals.alternateEmail
+			this.children = userVals.children
+			this.householdOccupation = userVals.householdOccupation
+			this.tutor = userVals.tutor
+			this.tutorArea = userVals.tutorArea
+			this.publishEdgeDirectory = !!userVals.publishEdgeDirectory
+			this.emailSubscription = !!userVals.emailSubscription
+		}
 
 		if (this.initialLoadWaiting) {
 			this.initialLoadWaiting = false

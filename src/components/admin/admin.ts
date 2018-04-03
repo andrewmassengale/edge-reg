@@ -25,11 +25,12 @@ export class Admin {
 	public async addNewUser() {
 		try {
 			await firebase.auth().createUserWithEmailAndPassword(this.newUserEmail, this.newUserPass)
-			swal(
+			await swal(
 				'Success!',
 				'New user successfully added. They have been sent an e-mail with a link to login.',
 				'success',
 			)
+			this.newUserEmail = ''
 		} catch (e) {
 			swal({
 				title: e.message,
