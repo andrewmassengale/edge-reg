@@ -1,3 +1,60 @@
 <template>
-	<strong>template!!</strong>
+	<h1>Edge Reg Administration</h1>
+	<hr>
+
+	<h3>Add New Edge User</h3>
+	<form role="form" submit.delegate="addNewUser()">
+		<div class="col-sm-6 remove-padding">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Email Address" value.bind="newUserEmail">
+				<span class="input-group-btn">
+					<input type="submit" class="btn btn-success" value="Add User">
+				</span>
+			</div>
+		</div>
+	</form>
+
+	<div class="clearfix"></div>
+	<hr>
+
+	<h3>Current Edge users</h3>
+	<table class="table table-striped table-hover table-condensed">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>E-mail</th>
+				<th>User Data</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody repeat.for="user of users">
+			<tr>
+				<td>${user.name}</td>
+				<td>${user.email}</td>
+				<td>
+					<a
+						href="#"
+						class="btn btn-success btn-xs"
+						click.delegate="loadUserData(user)">
+						Load User Data
+					</a>
+				</td>
+				<td>
+					<a
+						href="#"
+						class="btn btn-${user.admin ? 'danger' : 'primary'} btn-xs"
+						click.delegate="adjustAdmin(user)">
+						${user.admin ? 'Remove' : 'Make'} Admin
+					</a>
+					&nbsp;
+					<a
+						href="#"
+						class="btn btn-${user.teacher ? 'danger' : 'primary'} btn-xs"
+						click.delegate="adjustTeacher(user)">
+						${user.teacher ? 'Remove' : 'Make'} Teacher
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </template>

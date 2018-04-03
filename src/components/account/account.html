@@ -2,25 +2,48 @@
 	<h1>Manage Your Account</h1>
 	<hr>
 
-	<div class="form-horizontal">
-		<h3>Update Your Password</h3>
+	<form role="form" submit.delegate="updatePassword()">
+		<div class="form-horizontal">
+			<h3>Update Your Password</h3>
 
-		<div class="form-group col-sm-6">
-			<label for="password">Password</label>
-			<input type="password" placeholder="Password" class="form-control" id="password" value.bind="password" focus.bind="passwordFocus">
-		</div>
+			<div class="form-group col-sm-6">
+				<label for="password">Password</label>
+				<input type="password" placeholder="Password" class="form-control" id="password" value.bind="password" focus.bind="passwordFocus">
+			</div>
 
-		<div class="clearfix"></div>
-		
-		<div class="form-group col-sm-6">
-			<label for="password-repeat">Re-type Password</label>
-			<input type="password" placeholder="Re-Type Your Password" class="form-control" id="password-repeat" value.bind="passwordRepeat">
-		</div>
-		
-		<div class="clearfix"></div>
+			<div class="clearfix"></div>
+			
+			<div class="form-group col-sm-6">
+				<label for="password-repeat">Re-type Password</label>
+				<input type="password" placeholder="Re-Type Your Password" class="form-control" id="password-repeat" value.bind="passwordRepeat">
+			</div>
+			
+			<div class="clearfix"></div>
 
-		<div class="form-group col-sm-12">
-			<a href="#" class="btn btn-success" click.delegate="updatePassword()">Update Password</a>
+			<div class="form-group col-sm-12">
+				<input type="submit" class="btn btn-success" value="Update Password">
+			</div>
 		</div>
-	</div>
+	</form>
+
+	<div class="clearfix"></div>
+	<hr>
+	<div class="clearfix"></div>
+
+	<form role="form" submit.delegate="updateEmail()">
+		<div class="form-horizontal">
+			<h3>Update Your Email Address</h3>
+	
+			<div class="form-group col-sm-6">
+				<label for="email">New Email</label>
+				<input type="text" placeholder="Email Address" class="form-control" id="email" value.bind="email">
+			</div>
+	
+			<div class="clearfix"></div>
+	
+			<div class="form-group col-sm-12">
+				<input type="submit" class="btn btn-success" value="Update Email">
+			</div>
+		</div>
+	</form>
 </template>

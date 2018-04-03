@@ -13,18 +13,18 @@ export class User {
 	public loggedIn: Boolean = false
 	public admin: Boolean = false
 	public teacher: Boolean = false
-	public name: String
-	public spouseName: String
-	public address: String
-	public city: String
-	public zipCode: String
-	public phone: String
-	public email: String
-	public alternateEmail: String
+	public name: string
+	public spouseName: string
+	public address: string
+	public city: string
+	public zipCode: string
+	public phone: string
+	public email: string
+	public alternateEmail: string
 	public children: IChildren[]
-	public householdOccupation: String
+	public householdOccupation: string
 	public tutor: Boolean
-	public tutorArea: String
+	public tutorArea: string
 	public publishEdgeDirectory: Boolean
 	public emailSubscription: Boolean
 

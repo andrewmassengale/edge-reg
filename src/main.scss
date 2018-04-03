@@ -5,6 +5,12 @@ body {
 	font-family: sans-serif;
 }
 
+div[class^='col-'] {
+	&.remove-padding {
+		padding: 0;
+	}
+}
+
 .toggle-check-input {
 	height: 0;
 	width: 0;
