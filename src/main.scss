@@ -11,6 +11,16 @@ div[class^='col-'] {
 	}
 }
 
+table.schedule-table {
+	tr.success {
+		cursor: pointer;
+	}
+
+	tr.danger:hover>td {
+		background-color: $state-danger-bg;
+	}
+}
+
 .indent_left {
 	padding-left: 15px;
 }

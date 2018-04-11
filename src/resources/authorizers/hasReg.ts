@@ -1,15 +1,15 @@
 import { inject } from 'aurelia-framework'
 import { EventAggregator } from 'aurelia-event-aggregator'
 import { NavigationInstruction, Next, Redirect } from 'aurelia-router'
-import { User } from '../models/user'
+import { UserModel } from '../models/UserModel'
 import * as firebase from 'firebase'
 
-@inject(User, EventAggregator)
+@inject(UserModel, EventAggregator)
 export class HasReg {
-	private user: User
+	private user: UserModel
 	private ea: EventAggregator
 
-	constructor(user: User, ea: EventAggregator) {
+	constructor(user: UserModel, ea: EventAggregator) {
 		this.user = user
 		this.ea = ea
 	}

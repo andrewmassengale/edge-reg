@@ -1,13 +1,13 @@
 import { inject } from 'aurelia-framework'
 import swal from 'sweetalert2'
 
-import { User } from '../../resources/models/user'
+import { UserModel } from '../../resources/models/UserModel'
 
-@inject(User)
+@inject(UserModel)
 export class Register {
-	private user: User
+	private user: UserModel
 
-	constructor(user: User) {
+	constructor(user: UserModel) {
 		this.user = user
 	}
 

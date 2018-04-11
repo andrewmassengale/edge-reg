@@ -2,17 +2,25 @@ import { inject } from 'aurelia-framework'
 import { EventAggregator } from 'aurelia-event-aggregator'
 import * as firebase from 'firebase'
 
+// tslint:disable-next-line:no-namespace
 declare global {
+	// tslint:disable-next-line:interface-name
 	interface Window { user: any, loggedInUser: any }
 }
 
-@inject(EventAggregator)
-export class User {
-	public initialLoad: Boolean = false
+interface IChildren {
+	name: string
+	birthDate: string
+	homeEducated: boolean
+}
 
-	public loggedIn: Boolean = false
-	public admin: Boolean = false
-	public teacher: Boolean = false
+@inject(EventAggregator)
+export class UserModel {
+	public initialLoad: boolean = false
+
+	public loggedIn: boolean = false
+	public admin: boolean = false
+	public teacher: boolean = false
 	public name: string = ''
 	public spouseName: string = ''
 	public address: string = ''
@@ -23,24 +31,24 @@ export class User {
 	public alternateEmail: string = ''
 	public children: IChildren[] = [ ]
 	public householdOccupation: string = ''
-	public tutor: Boolean = false
+	public tutor: boolean = false
 	public tutorArea: string = ''
-	public publishEdgeDirectory: Boolean = false
-	public emailSubscription: Boolean = false
+	public publishEdgeDirectory: boolean = false
+	public emailSubscription: boolean = false
 
 	private database
 	private ea: EventAggregator
 	private userListener
-	private initialLoadWaiting: Boolean = false
+	private initialLoadWaiting: boolean = false
 
 	public constructor(ea: EventAggregator) {
+		window.user = this
 		this.ea = ea
 		this.database = firebase.database()
 	}
 
-	public async syncUser(): Promise<boolean> {
+	public syncUser() {
 		const currentUser = firebase.auth().currentUser
-		window.user = this
 
 		this.loggedIn = !!currentUser
 
@@ -49,8 +57,6 @@ export class User {
 			this.initialLoadWaiting = true
 			this.userListener.on('value', this.syncUserChangesFromFirebase.bind(this))
 		}
-
-		return true
 	}
 
 	public async saveUser(): Promise<boolean> {
@@ -125,10 +131,4 @@ export class User {
 			this.ea.publish('user_initial_load')
 		}
 	}
-}
-
-interface IChildren {
-	name: String
-	birthDate: String
-	homeEducated: Boolean
 }

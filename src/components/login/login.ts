@@ -3,9 +3,9 @@ import { Router } from 'aurelia-router'
 import * as firebase from 'firebase'
 import swal from 'sweetalert2'
 
-import { User } from '../../resources/models/user'
+import { UserModel } from '../../resources/models/UserModel'
 
-@inject(Router, User)
+@inject(Router, UserModel)
 export class Login {
 	public email
 	public password
@@ -13,7 +13,7 @@ export class Login {
 	public router
 	public user
 
-	public constructor(router: Router, user: User) {
+	public constructor(router: Router, user: UserModel) {
 		this.router = router
 		this.user = user
 	}

@@ -1,0 +1,27 @@
+<template>
+	<h1>EDGE Schedule</h1>
+	<hr>
+
+	<div if.bind="user.teacher">
+		<a href="#" class="btn btn-success">+ Add Class</a>
+		<br>
+		<br>
+	</div>
+
+	<table class="schedule-table table table-bordered table-hover table-responsive">
+		<thead>
+			<tr>
+				<th>Time Slot</th>
+				<th>Classes</th>
+			</tr>
+		</thead>
+		<tbody repeat.for="scheduleItem of schedule.schedule">
+			<tr class="${scheduleItem.info.editable ? 'success' : 'danger'}">
+				<td>${scheduleItem.info.name}<br><small>&nbsp;&nbsp;${scheduleItem.timeslot}</small></td>
+				<td>
+					<span if.bind="!scheduleItem.info.editable">-</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</template>
