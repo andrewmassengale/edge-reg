@@ -1,3 +1,4 @@
+// node_modules
 import * as firebase from 'firebase'
 import swal from 'sweetalert2'
 

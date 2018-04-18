@@ -1,7 +1,9 @@
+// node_modules
 import { inject } from 'aurelia-framework'
 import swal from 'sweetalert2'
 
-import { UserModel } from '../../resources/models/UserModel'
+// src
+import { UserModel } from 'resources/models/UserModel'
 
 @inject(UserModel)
 export class Register {

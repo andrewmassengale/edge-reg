@@ -1,8 +1,11 @@
+// node_modules
 import { inject } from 'aurelia-framework'
 import { EventAggregator } from 'aurelia-event-aggregator'
 import { NavigationInstruction, Next, Redirect } from 'aurelia-router'
 import * as firebase from 'firebase'
-import { UserModel } from '../models/UserModel'
+
+// src
+import { UserModel } from 'resources/models/UserModel'
 
 @inject(UserModel, EventAggregator)
 export class IsAdmin {

@@ -1,6 +1,9 @@
+// node_modules
 import { Aurelia } from 'aurelia-framework'
 import * as firebase from 'firebase'
-import environment from './environment'
+
+// src
+import environment from 'environment'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDXV3cHbXKkC4A41NApOQl4kWMuj1V_rX0',

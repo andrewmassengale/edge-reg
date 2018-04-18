@@ -1,3 +1,4 @@
+// node_modules
 import * as firebase from 'firebase'
 
 // tslint:disable-next-line:no-namespace

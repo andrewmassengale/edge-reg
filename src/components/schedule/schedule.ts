@@ -1,8 +1,10 @@
+// node_modules
 import { inject } from 'aurelia-framework'
 import swal from 'sweetalert2'
 
-import { UserModel } from '../../resources/models/UserModel'
-import { ScheduleModel } from '../../resources/models/ScheduleModel'
+// src
+import { UserModel } from 'resources/models/UserModel'
+import { ScheduleModel } from 'resources/models/ScheduleModel'
 
 @inject(UserModel, ScheduleModel)
 export class Schedule {

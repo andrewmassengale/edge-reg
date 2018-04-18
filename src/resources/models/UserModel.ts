@@ -1,3 +1,4 @@
+// node_modules
 import { inject } from 'aurelia-framework'
 import { EventAggregator } from 'aurelia-event-aggregator'
 import * as firebase from 'firebase'

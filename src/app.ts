@@ -1,12 +1,14 @@
+// node_modules
 import { inject } from 'aurelia-framework'
 import { RouterConfiguration, Router } from 'aurelia-router'
 import * as firebase from 'firebase'
 
-import { UserModel } from './resources/models/UserModel'
-import { ScheduleModel } from './resources/models/ScheduleModel'
-import { LoggedIn } from './resources/authorizers/loggedIn'
-import { IsAdmin } from './resources/authorizers/isAdmin'
-import { HasReg } from './resources/authorizers/hasReg'
+// src
+import { UserModel } from 'resources/models/UserModel'
+import { ScheduleModel } from 'resources/models/ScheduleModel'
+import { LoggedIn } from 'resources/authorizers/loggedIn'
+import { IsAdmin } from 'resources/authorizers/isAdmin'
+import { HasReg } from 'resources/authorizers/hasReg'
 
 @inject(UserModel, ScheduleModel, LoggedIn, IsAdmin, HasReg)
 export class App {

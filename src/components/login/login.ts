@@ -1,9 +1,11 @@
 import { inject } from 'aurelia-framework'
+// node_modules
 import { Router } from 'aurelia-router'
 import * as firebase from 'firebase'
 import swal from 'sweetalert2'
 
-import { UserModel } from '../../resources/models/UserModel'
+// src
+import { UserModel } from 'resources/models/UserModel'
 
 @inject(Router, UserModel)
 export class Login {

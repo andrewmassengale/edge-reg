@@ -1,3 +1,4 @@
+// node_modules
 import { NavigationInstruction, Next, Redirect } from 'aurelia-router'
 import * as firebase from 'firebase'
 

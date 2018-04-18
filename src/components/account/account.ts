@@ -1,8 +1,10 @@
+// node_modules
 import { inject } from 'aurelia-framework'
 import * as firebase from 'firebase'
 import swal from 'sweetalert2'
 
-import { UserModel } from '../../resources/models/UserModel'
+// src
+import { UserModel } from 'resources/models/UserModel'
 
 @inject(UserModel)
 export class Account {
